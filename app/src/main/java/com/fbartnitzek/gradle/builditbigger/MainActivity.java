@@ -1,12 +1,14 @@
 package com.fbartnitzek.gradle.builditbigger;
 
-import android.support.v7.app.ActionBarActivity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
+import com.example.frank.displayjokeandroidlibrary.DisplayJokeActivity;
+import com.example.frank.displayjokeandroidlibrary.DisplayJokeFragment;
 import com.fbartnitzek.gradle.Joker;
 
 
@@ -41,8 +43,11 @@ public class MainActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void tellJoke(View view){
-        Toast.makeText(this, Joker.getJoke(), Toast.LENGTH_LONG).show();
+    public void tellJoke(View view) {
+//        Toast.makeText(this, Joker.getJoke(), Toast.LENGTH_LONG).show();
+        Intent jokeIntent = new Intent(this, DisplayJokeActivity.class)
+                .putExtra(DisplayJokeFragment.ARG_JOKE, Joker.getJoke());
+        startActivity(jokeIntent);
     }
 
 
