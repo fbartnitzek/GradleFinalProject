@@ -13,6 +13,7 @@ public class Joker {
                 "A: Female, because it doesn't let you finish a sentence before making a suggestion. ",
             "TODO: more jokes... "
     };
+    // quite good idea - using: https://github.com/werkn/icndb-java
 
     public static String getRandomJoke(){
 
