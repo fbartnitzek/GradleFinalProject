@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.fbartnitzek.gradle.displayjokeandroidlibrary.DisplayJokeActivity;
@@ -17,10 +18,13 @@ import java.io.IOException;
 public class BaseMainActivity extends AppCompatActivity implements JokeAsyncTask.JokeCallback{
 
     private JokeAsyncTask mJokeTask = null;
+    private ProgressBar mProgressBar = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mProgressBar = (ProgressBar) findViewById(R.id.progress_bar);
+        mProgressBar.setVisibility(View.GONE);
     }
 
     @Override
@@ -46,6 +50,7 @@ public class BaseMainActivity extends AppCompatActivity implements JokeAsyncTask
     }
 
     public void requestJoke(){
+        mProgressBar.setVisibility(View.VISIBLE);
         if (mJokeTask != null) {
             mJokeTask.cancel(true);
         }
@@ -67,6 +72,7 @@ public class BaseMainActivity extends AppCompatActivity implements JokeAsyncTask
 
     @Override
     public void onSuccess(String joke) {
+        mProgressBar.setVisibility(View.GONE);
         Intent jokeIntent = new Intent(this, DisplayJokeActivity.class)
             .putExtra(DisplayJokeFragment.ARG_JOKE, joke);
         startActivity(jokeIntent);
@@ -74,6 +80,7 @@ public class BaseMainActivity extends AppCompatActivity implements JokeAsyncTask
 
     @Override
     public void onError(IOException e) {
+        mProgressBar.setVisibility(View.GONE);
         Toast.makeText(this, "an error occurred: " + e.getMessage(), Toast.LENGTH_LONG).show();
     }
 }
