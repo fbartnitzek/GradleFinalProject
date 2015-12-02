@@ -14,7 +14,7 @@ import com.fbartnitzek.gradle.displayjokeandroidlibrary.DisplayJokeFragment;
 import java.io.IOException;
 
 
-public class MainActivity extends AppCompatActivity implements JokeAsyncTask.JokeCallback{
+public class BaseMainActivity extends AppCompatActivity implements JokeAsyncTask.JokeCallback{
 
     private JokeAsyncTask mJokeTask = null;
     @Override
@@ -45,13 +45,23 @@ public class MainActivity extends AppCompatActivity implements JokeAsyncTask.Jok
         return super.onOptionsItemSelected(item);
     }
 
-    public void tellJoke(View view) {
+    public void requestJoke(){
         if (mJokeTask != null) {
             mJokeTask.cancel(true);
         }
 
         mJokeTask = new JokeAsyncTask();
         mJokeTask.execute(this);
+    }
+
+    public void tellJoke(View view) {
+        requestJoke();
+//        if (mJokeTask != null) {
+//            mJokeTask.cancel(true);
+//        }
+//
+//        mJokeTask = new JokeAsyncTask();
+//        mJokeTask.execute(this);
     }
 
 
