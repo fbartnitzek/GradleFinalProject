@@ -15,7 +15,7 @@ import java.io.IOException;
 /**
  * Created by frank on 29.11.15.
  */
-public class JokeAsyncTask extends
+class JokeAsyncTask extends
         AsyncTask<JokeAsyncTask.JokeCallback, Void, Pair<String, IOException>> {
 
     private static MyApi mApiService = null;
@@ -70,7 +70,7 @@ public class JokeAsyncTask extends
             Log.v(LOG_TAG, "onPostExecute - joke found: " + result.first);
         } else if (result.second != null) {
             mJokeCallback.onError(result.second);
-            Log.v(LOG_TAG, "onPostExecute, IOException occured ...");
+            Log.v(LOG_TAG, "onPostExecute, IOException occurred ...");
         }
     }
 

@@ -2,5 +2,5 @@
     <string name="app_name">DisplayJokeAndroidLibrary</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="no_joke_found">no joke found...</string>
+    <string name="no_joke_found">no joke found…</string>
 </resources>

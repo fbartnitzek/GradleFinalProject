@@ -2,19 +2,19 @@ package com.fbartnitzek.gradle.builditbigger;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
-import com.example.frank.displayjokeandroidlibrary.DisplayJokeActivity;
-import com.example.frank.displayjokeandroidlibrary.DisplayJokeFragment;
+import com.fbartnitzek.gradle.displayjokeandroidlibrary.DisplayJokeActivity;
+import com.fbartnitzek.gradle.displayjokeandroidlibrary.DisplayJokeFragment;
 
 import java.io.IOException;
 
 
-public class MainActivity extends ActionBarActivity implements JokeAsyncTask.JokeCallback{
+public class MainActivity extends AppCompatActivity implements JokeAsyncTask.JokeCallback{
 
     private JokeAsyncTask mJokeTask = null;
     @Override
@@ -64,6 +64,6 @@ public class MainActivity extends ActionBarActivity implements JokeAsyncTask.Jok
 
     @Override
     public void onError(IOException e) {
-        Toast.makeText(this, "an error occured: " + e.getMessage(), Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "an error occurred: " + e.getMessage(), Toast.LENGTH_LONG).show();
     }
 }

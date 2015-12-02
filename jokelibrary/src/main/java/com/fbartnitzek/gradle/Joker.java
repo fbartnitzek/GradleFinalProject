@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class Joker {
 
-    private static String[] jokes = new String[]{
+    private static final String[] jokes = new String[]{
             //src; http://www.laughfactory.com/jokes/technology-jokes
                 "Do not be racist; be like Mario. He's an Italian plumber, who was made by the " +
                  "Japanese, speaks English, looks like a Mexican, jumps like a black man, " +

@@ -1,8 +1,10 @@
-package com.example.frank.displayjokeandroidlibrary;
+package com.fbartnitzek.gradle.displayjokeandroidlibrary;
 
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+
+import com.example.frank.displayjokeandroidlibrary.R;
 
 public class DisplayJokeActivity extends AppCompatActivity {
 
