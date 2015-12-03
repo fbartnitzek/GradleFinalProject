@@ -17,3 +17,22 @@ allprojects {
         jcenter()
     }
 }
+
+// no really matching taskType found https://docs.gradle.org/current/dsl/
+// GradleBuild sounds most generic and possibly matching
+task runAllTestsWithGce (type: GradleBuild){
+    description "(1) Launches the GCE local development server, (2) Runs all tests, (3) Shuts the server down again"
+
+    // setup - daemon-mode-src:
+    // http://stackoverflow.com/questions/31434928/android-gradle-task-google-appengine
+    dependsOn ":backend:appengineRun"
+    project(":backend").afterEvaluate { backend ->
+        backend.extensions.appengine.daemon = true
+    }
+
+    // test
+    tasks = [':app:check', ':app:connectedCheck']
+
+    // tear down
+    finalizedBy ":backend:appengineStop"
+}

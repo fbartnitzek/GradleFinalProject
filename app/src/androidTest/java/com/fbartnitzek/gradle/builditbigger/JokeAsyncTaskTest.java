@@ -14,7 +14,7 @@ public class JokeAsyncTaskTest extends AndroidTestCase{
     private String mJoke;
     private final CountDownLatch signal = new CountDownLatch(1);
 
-    public void verifyValidJokeResponse() {
+    public void testVerifyValidJokeResponse() {
         // needs inline callback-class and wait for the result
         // src: http://stackoverflow.com/questions/2321829/android-asynctask-testing-with-android-test-framework
 
@@ -34,7 +34,10 @@ public class JokeAsyncTaskTest extends AndroidTestCase{
 
         try {
             signal.await(20, TimeUnit.SECONDS);
-            assert (mJoke != null && !mJoke.isEmpty());
+//            assert (mJoke != null && !mJoke.isEmpty());
+            if (BuildConfig.DEBUG && (mJoke == null || mJoke.isEmpty())) {
+                throw new AssertionError("no joke found");
+            }
         } catch (InterruptedException e) {
             fail(e.getMessage());
         }

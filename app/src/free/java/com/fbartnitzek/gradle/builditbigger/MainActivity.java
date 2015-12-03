@@ -12,7 +12,7 @@ import com.google.android.gms.ads.InterstitialAd;
  */
 public class MainActivity extends BaseMainActivity{
 
-    InterstitialAd mInterstitialAd;
+    private InterstitialAd mInterstitialAd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

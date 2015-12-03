@@ -49,7 +49,7 @@ public class BaseMainActivity extends AppCompatActivity implements JokeAsyncTask
         return super.onOptionsItemSelected(item);
     }
 
-    public void requestJoke(){
+    void requestJoke(){
         mProgressBar.setVisibility(View.VISIBLE);
         if (mJokeTask != null) {
             mJokeTask.cancel(true);
